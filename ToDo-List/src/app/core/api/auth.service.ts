@@ -9,6 +9,6 @@ export class AuthService {
   constructor(private apiService: ApiService) { }
 
   login(credentials){
-    return this.apiService.get("/login", credentials);
+    return this.apiService.post("/login", credentials);
   }
 }

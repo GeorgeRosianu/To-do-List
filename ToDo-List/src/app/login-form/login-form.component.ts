@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { AuthService } from '../core/api/auth.service';
+import { StorageHelper } from '../core/helpers/storage.helper';
 
 @Component({
   selector: 'app-login-form',
@@ -14,7 +17,9 @@ export class LoginFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private _snackBar: MatSnackBar,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -23,8 +28,8 @@ export class LoginFormComponent implements OnInit {
 
   initForm(){
     this.loginFormInstance = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
+      email: ["", Validators.required],
+      password: ["", Validators.required]
     })
   }
 
@@ -32,9 +37,18 @@ export class LoginFormComponent implements OnInit {
     if(this.loginFormInstance.invalid){
       return;
     }
-    this.authService.login({email: this.email.value, password: this.password.value}).subscribe(response => {
-      console.log(response)
-    })
+    this.authService.login({email: this.email.value, password: this.password.value}).subscribe((response: any) => {
+      StorageHelper.setToken(response.token),
+      (<any>this.router).navigate(["/homepage"])
+    }, error => {
+      console.log(error)
+      console.log(error.error.error)
+      this.openSnackBar(error.error.error, "Close")
+    });
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
 
   get email(){

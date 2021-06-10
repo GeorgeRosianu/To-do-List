@@ -12,11 +12,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { CoreModule } from './core/core.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,8 @@ import { CoreModule } from './core/core.module';
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    CoreModule
+    CoreModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

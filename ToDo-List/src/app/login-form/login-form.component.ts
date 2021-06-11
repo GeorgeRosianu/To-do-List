@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -39,7 +40,7 @@ export class LoginFormComponent implements OnInit {
     }
     this.authService.login({email: this.email.value, password: this.password.value}).subscribe((response: any) => {
       StorageHelper.setToken(response.token),
-      (<any>this.router).navigate(["/homepage"])
+      (<any>this.router).navigate(["/home"])
     }, error => {
       console.log(error)
       console.log(error.error.error)

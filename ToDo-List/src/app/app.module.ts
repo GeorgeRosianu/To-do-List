@@ -11,15 +11,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { CoreModule } from './core/core.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { HomepageComponent } from './homepage/homepage.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+//import { HomepageComponent } from './homepage/homepage.component';
+import { CoreModule } from './core/core.module';
+//import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginFormComponent,
-    HomepageComponent
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
@@ -32,8 +33,9 @@ import { HomepageComponent } from './homepage/homepage.component';
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    CoreModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCheckboxModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

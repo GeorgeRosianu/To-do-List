@@ -1,10 +1,13 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from '../core/api/auth.service';
 import { StorageHelper } from '../core/helpers/storage.helper';
+import { User } from '../core/models/user';
+import { RegisterFormComponent } from '../register-form/register-form.component';
 
 @Component({
   selector: 'app-login-form',
@@ -15,12 +18,14 @@ export class LoginFormComponent implements OnInit {
 
   hide = true;
   loginFormInstance: FormGroup = new FormGroup({});
+  userList = JSON.parse(localStorage.getItem('users')) || [];
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private _snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    public  dialog: MatDialog
     ) { }
 
   ngOnInit(): void {
@@ -47,6 +52,31 @@ export class LoginFormComponent implements OnInit {
       this.openSnackBar(error.error.error, "Close")
     });
   }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(RegisterFormComponent, {
+      width: '45vh',
+      height: '65vh'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      if(result !== undefined) {
+        let user = {
+          firstName: result.value.firstName,
+          lastName: result.value.lastName,
+          username: result.value.username,
+          email: result.value.email,
+          password: result.value.password
+        }
+        this.saveDataToLocalStorage(user);
+      }
+    })
+  }
+
+  saveDataToLocalStorage(data) {
+    this.userList.push(data);
+    localStorage.setItem('users', JSON.stringify(this.userList));
+   }
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action);

@@ -13,14 +13,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-//import { HomepageComponent } from './homepage/homepage.component';
 import { CoreModule } from './core/core.module';
-//import { HomeModule } from './home/home.module';
+import { RegisterFormComponent } from './register-form/register-form.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    RegisterFormComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +36,8 @@ import { CoreModule } from './core/core.module';
     MatInputModule,
     MatSnackBarModule,
     MatCheckboxModule,
-    CoreModule
+    CoreModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

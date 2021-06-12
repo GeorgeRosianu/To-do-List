@@ -3,24 +3,33 @@
     <div class="register-form">
         <form [formGroup]="registerForm">
             <mat-form-field>
+                <input matInput placeholder="Email" formControlName="email">
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password">
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <input matInput placeholder="Confirm password" [type]="hide ? 'confirmPassword' : 'text'" formControlName="confirmPassword">
+            </mat-form-field>
+            <br>
+            <mat-form-field>
                 <input matInput placeholder="First name" formControlName="firstName">
             </mat-form-field>
             <br>
             <mat-form-field>
                 <input matInput placeholder="Last name" formControlName="lastName">
             </mat-form-field>
-            <br>
-            <mat-form-field>
-                <input matInput placeholder="Username" formControlName="username">
-            </mat-form-field>
-            <br>
-            <mat-form-field>
-                <input matInput placeholder="Password" formControlName="password">
-            </mat-form-field>
-            <br>
-            <mat-form-field>
-                <input matInput placeholder="Email" formControlName="email">
-            </mat-form-field>
+
+            <div class="passwordStrength" *ngIf='password.errors?.passwordStrength'>
+                Password is too weak
+            </div>
+            
+            <div class="passwordMatch" *ngIf='confirmPassword.errors?.passwordNotMatch'>
+                Passwords do not match
+            </div>
+            
         </form>
     </div>
     

@@ -16,6 +16,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CoreModule } from './core/core.module';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSnackBarModule,
     MatCheckboxModule,
     CoreModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

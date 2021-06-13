@@ -18,6 +18,26 @@ export class CustomValidators {
         };
       }
 
+    public static time(): ValidatorFn {
+        return (control: AbstractControl): ValidationErrors | null => {
+            const value = control.value;
+            if(!value){
+                return null;
+            }
+            return /[0-9]{1,2}:[0-9]{1,2}/.test(value) ? null : { timeInvalid: true };
+        }
+    }
+
+    public static date(): ValidatorFn {
+        return (control: AbstractControl): ValidationErrors | null => {
+            const value = control.value;
+            if(!value){
+                return null;
+            }
+            return /^([0-2][0-9]|(3)[0-1])(-)(((0)[0-9])|((1)[0-2]))(-)\d{4}$/.test(value) ? null : {dateInvalid: true};
+        }
+    }
+
     public static passwordStrength(): ValidatorFn {
         return (control: AbstractControl): ValidationErrors | null => {
             const value = control.value;

@@ -19,6 +19,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { AddTaskComponent } from './modals/add-task/add-task.component';
 import { EditTaskComponent } from './modals/edit-task/edit-task.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { EditTaskComponent } from './modals/edit-task/edit-task.component';
     MatCheckboxModule,
     CoreModule,
     MatDialogModule,
-    MatDividerModule
+    MatDividerModule,
+    MatDatepickerModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

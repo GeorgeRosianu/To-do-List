@@ -8,16 +8,6 @@ import { Task } from 'src/app/core/models/task';
 import { AddTaskComponent } from 'src/app/modals/add-task/add-task.component';
 import { EditTaskComponent } from 'src/app/modals/edit-task/edit-task.component';
 
-// export interface Task {
-//   position: number;
-//   title: string;
-//   description: string;
-//   estimatedTime: string;
-//   category: string;
-//   date: string;
-//   status: string;
-// }
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -26,12 +16,15 @@ import { EditTaskComponent } from 'src/app/modals/edit-task/edit-task.component'
 export class HomeComponent implements OnInit, AfterViewInit {
 
   taskList: Task[] = [
-    {position: 1, title: 'first title', description: 'first description', estimatedTime: 'drc stie', category: 'random', date: '01-16-2021', status: 'drc stie'},
-    {position: 2, title: 'second title', description: 'second description', estimatedTime: 'drc stie', category: 'random', date: '01-16-2021', status: 'drc stie'},
+    {position: 1, title: 'Send email', description: 'Send an email update to the team', estimatedTime: '9:00', category: 'Email', date: '02-06-2021', status: 'Complete'},
+    {position: 2, title: 'Call design agency', description: 'Call to finalize mockups', estimatedTime: '13:00', category: 'Call', date: '02-06-2021', status: 'Complete'},
+    {position: 3, title: 'Touch Base with recr', description: 'Is the new role being added', estimatedTime: '10:30', category: 'Meeting', date: '04-06-2021', status: 'In Progress'},
+    {position: 4, title: 'Meet with eng team', description: '', estimatedTime: '10:00', category: 'Meeting', date: '05-06-2021', status: 'Not Started'},
   ];
 
   displayedColumns: string[] = ['position', 'title', 'description', 'estimatedTime', 'category', 'date', 'status', 'actions'];
   dataSource;
+  titleSearchValue;
 
   @ViewChild(MatSort) sort: MatSort;
 
@@ -78,6 +71,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
       this.taskList.splice(index, 1);
       this.dataSource.data = this.taskList;
     }
+  }
+
+  searchByTitle() {
+    this.dataSource.data = this.taskList.filter(e => e.title == this.titleSearchValue);
   }
 
   openDialog() {

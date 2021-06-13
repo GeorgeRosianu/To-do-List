@@ -3,6 +3,7 @@
     <form [formGroup]="taskForm">
         <mat-form-field>
             <input matInput placeholder="Position" formControlName="position">
+            <mat-error *ngIf="position.errors?.notNumber">Only numbers accepted</mat-error>
         </mat-form-field>
         <mat-form-field>
             <input matInput placeholder="Title" formControlName="title">
@@ -12,15 +13,22 @@
         </mat-form-field>
         <mat-form-field>
             <input matInput placeholder="Estimated time" formControlName="estimatedTime">
+            <mat-error *ngIf="estimatedTime.errors?.timeInvalid">Time format: hh:mm</mat-error>
         </mat-form-field>
         <mat-form-field>
             <input matInput placeholder="Category" formControlName="category">
         </mat-form-field>
         <mat-form-field>
             <input matInput placeholder="Date" formControlName="date">
+            <mat-error *ngIf="date.errors?.dateInvalid">Day format: dd-mm-yyyy</mat-error>
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Status" formControlName="status">
+            <mat-label>Select Status</mat-label>
+            <mat-select formControlName="status">
+              <mat-option value="Not Started">Not Started</mat-option>
+              <mat-option value="In Progress">In Progress</mat-option>
+              <mat-option value="Complete">Complete</mat-option>
+            </mat-select>
         </mat-form-field>
     </form>
 

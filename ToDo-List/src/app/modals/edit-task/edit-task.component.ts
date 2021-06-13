@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CustomValidators } from 'src/app/core/helpers/custom-validators';
 import { Task } from 'src/app/core/models/task';
 
 
@@ -37,7 +38,7 @@ export class EditTaskComponent implements OnInit {
         ],
         updateOn: 'blur'
       }],
-      estimatedTime: [this.data.estimatedTime, Validators.required],
+      estimatedTime: [this.data.estimatedTime, CustomValidators.time()],
       category: [this.data.category,
       {
         validators: [
@@ -49,7 +50,7 @@ export class EditTaskComponent implements OnInit {
         ],
         updateOn: 'blur'
       }],
-      date: [this.data.date, Validators.required],
+      date: [this.data.date, CustomValidators.date()],
       status: [this.data.status, Validators.required]
     })
   }
@@ -60,5 +61,17 @@ export class EditTaskComponent implements OnInit {
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  get date() {
+    return this.taskForm.get('date');
+  }
+
+  get estimatedTime() {
+    return this.taskForm.get('estimatedTime');
+  }
+
+  get position() {
+    return this.taskForm.get('position');
   }
 }

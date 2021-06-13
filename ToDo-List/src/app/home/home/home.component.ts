@@ -74,7 +74,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   searchByTitle() {
-    this.dataSource.data = this.taskList.filter(e => e.title == this.titleSearchValue);
+    this.dataSource.data = this.taskList.filter(e => e.title.toLowerCase() == this.titleSearchValue.toLowerCase());
+  }
+
+  clearTitleSearch() {
+    this.titleSearchValue = '';
+    this.dataSource.data = this.taskList;
   }
 
   openDialog() {

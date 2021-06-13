@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>Edit Task</h1>
+<div mat-dialog-content>
+
+    <form [formGroup]="taskForm">
+        <mat-form-field>
+            <input matInput placeholder="Position" formControlName="position" readonly>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Title" formControlName="title">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Description" formControlName="description">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Estimated time" formControlName="estimatedTime">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Category" formControlName="category">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Date" formControlName="date">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Status" formControlName="status">
+        </mat-form-field>
+    </form>
+
+    <div mat-dialog-actions>
+        <button mat-button color="primary" (click)="onNoClick()"> Cancel </button>
+        <button mat-flat-button color="primary" [mat-dialog-close]="taskForm" [disabled]= "taskForm.invalid" cdkFocusInitial> Ok </button>
+    </div>
+</div>

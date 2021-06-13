@@ -17,12 +17,16 @@ import { CoreModule } from './core/core.module';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
+import { AddTaskComponent } from './modals/add-task/add-task.component';
+import { EditTaskComponent } from './modals/edit-task/edit-task.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginFormComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    AddTaskComponent,
+    EditTaskComponent
   ],
   imports: [
     BrowserModule,

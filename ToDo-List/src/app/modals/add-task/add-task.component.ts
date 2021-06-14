@@ -21,7 +21,11 @@ export class AddTaskComponent implements OnInit {
 
   ngOnInit(): void {
     this.taskForm = this.fb.group({
-      position: ['', Validators.required],
+      position: ['', Validators.compose([
+        Validators.required,
+        Validators.maxLength(5),
+        CustomValidators.numbers
+      ])],
       title: ['', Validators.compose([
         Validators.required,
         Validators.minLength(3),

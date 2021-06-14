@@ -7,12 +7,14 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Task } from 'src/app/core/models/task';
 import { AddTaskComponent } from 'src/app/modals/add-task/add-task.component';
 import { EditTaskComponent } from 'src/app/modals/edit-task/edit-task.component';
+import { XunkCalendarModule } from 'xunk-calendar';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.less']
 })
+
 export class HomeComponent implements OnInit, AfterViewInit {
 
   taskList: Task[] = [
@@ -25,6 +27,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['position', 'title', 'description', 'estimatedTime', 'category', 'date', 'status', 'actions'];
   dataSource;
   titleSearchValue;
+  selDate = XunkCalendarModule.getToday();
 
   @ViewChild(MatSort) sort: MatSort;
 

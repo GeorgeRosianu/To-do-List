@@ -32,8 +32,15 @@ export class LoginFormComponent implements OnInit {
 
   initForm(){
     this.loginFormInstance = this.formBuilder.group({
-      email: ["", Validators.required],
-      password: ["", Validators.required]
+      email: ["", Validators.compose([
+        Validators.required,
+        Validators.email,
+        Validators.maxLength(30)
+      ])],
+      password: ["", Validators.compose([
+        Validators.required,
+        Validators.maxLength(30)
+      ])]
     })
   }
 

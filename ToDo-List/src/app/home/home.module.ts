@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { XunkCalendarModule } from 'xunk-calendar';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatCardModule,
     MatButtonModule,
     MatDatepickerModule,
-    MatIconModule
+    MatIconModule,
+    XunkCalendarModule
   ]
 })
 export class HomeModule { }
